@@ -28,42 +28,10 @@ La unidad de medida de `tick` son **milisegundos (mS)**. El índice utilizado es
 
 | Etapa de Ejecución | `index` | `tick` [mS] | `state` | `event` | `flag` |
 | --- | --- | --- | --- | --- | --- |
-| **Inicio (`task_system_init`)**<br> | 0
-
- | 0
-
- | `ST_SYS_IDLE` (0)
-
- | `EV_SYS_IDLE` (0)
-
- | `false`<br> |
-| **`task_system_update` (sin eventos)**<br> | 0
-
- | 0
-
- | `ST_SYS_IDLE` (0)
-
- | `EV_SYS_IDLE` (0)
-
- | `false`<br> |
-| **`task_system_update` (recibe `EV_SYS_ACTIVE`)**<br> | 0
-
- | 0
-
- | Transiciona a `ST_SYS_ACTIVE` (1)
-
- | `EV_SYS_ACTIVE` (1)
-
- | `true` $\rightarrow$ `false`<br> |
-| **`task_system_update` (recibe `EV_SYS_IDLE`)**<br> | 0
-
- | 0
-
- | Transiciona a `ST_SYS_IDLE` (0)
-
- | `EV_SYS_IDLE` (0)
-
- | `true` $\rightarrow$ `false`<br> |
+| **Inicio (`task_system_init`)**<br> | 0 | 0 | `ST_SYS_IDLE` (0) | `EV_SYS_IDLE` (0) | `false`<br> |
+| **`task_system_update` (sin eventos)**<br> | 0 | 0 | `ST_SYS_IDLE` (0) | `EV_SYS_IDLE` (0) | `false`<br> |
+| **`task_system_update` (recibe `EV_SYS_ACTIVE`)**<br> | 0 | 0 | Transiciona a `ST_SYS_ACTIVE` (1) | `EV_SYS_ACTIVE` (1) | `true` $\rightarrow$ `false`<br> |
+| **`task_system_update` (recibe `EV_SYS_IDLE`)**<br> | 0 | 0 | Transiciona a `ST_SYS_IDLE` (0) | `EV_SYS_IDLE` (0) | `true` $\rightarrow$ `false`<br> |
 
 ---
 
@@ -73,42 +41,10 @@ La cola almacena hasta 16 elementos (`QUEUE_LENGTH`), indexados de `i = 0` a `15
 
 | Etapa de Ejecución | `head` | `tail` | `count` | `queue[i]` (Contenido) |
 | --- | --- | --- | --- | --- |
-| **Inicio (`init_event_task_system`)**<br> | 0
-
- | 0
-
- | 0
-
- | `queue[0..15]` = `255` (`EMPTY`)
-
- |
-| **Llega evento `EV_SYS_ACTIVE**`<br> | 1
-
- | 0
-
- | 1
-
- | `queue[0]` = `1` (`EV_SYS_ACTIVE`)
-
- |
-| **Procesado en `task_system_update**`<br> | 1
-
- | 1
-
- | 0
-
- | `queue[0]` = `255` (`EMPTY`)
-
- |
-| **Llega evento `EV_SYS_IDLE**`<br> | 2
-
- | 1
-
- | 1
-
- | `queue[1]` = `0` (`EV_SYS_IDLE`)
-
- |
+| **Inicio (`init_event_task_system`)**<br> | 0 | 0 | 0 | `queue[0..15]` = `255` (`EMPTY`)|
+| **Llega evento `EV_SYS_ACTIVE**`<br> | 1 | 0 | 1 | `queue[0]` = `1` (`EV_SYS_ACTIVE`)|
+| **Procesado en `task_system_update**`<br> | 1 | 1 | 0 | `queue[0]` = `255` (`EMPTY`)|
+| **Llega evento `EV_SYS_IDLE**`<br> | 2 | 1 | 1 | `queue[1]` = `0` (`EV_SYS_IDLE`)|
 
 ---
 
@@ -118,18 +54,6 @@ El actuador configurado es el LED principal con `identifier = 0` (`ID_LED_A`).
 
 | Etapa de Ejecución | `identifier` | `task_actuator_dta_list[0].event` | `task_actuator_dta_list[0].flag` |
 | --- | --- | --- | --- |
-| **Inicio**<br> | 0 (`ID_LED_A`)
-
- | Valor por defecto de inicialización
-
- | `false`<br> |
-| **Transición a activo en `task_system_update**`<br> | 0 (`ID_LED_A`)
-
- | `EV_LED_ACTIVE` (1)
-
- | `true`<br> |
-| **Transición a inactivo en `task_system_update**`<br> | 0 (`ID_LED_A`)
-
- | `EV_LED_IDLE` (0)
-
- | `true`<br> |
+| **Inicio**<br> | 0 (`ID_LED_A`)| Valor por defecto de inicialización | `false`<br> |
+| **Transición a activo en `task_system_update**`<br> | 0 (`ID_LED_A`) | `EV_LED_ACTIVE` (1) | `true`<br> |
+| **Transición a inactivo en `task_system_update**`<br> | 0 (`ID_LED_A`) | `EV_LED_IDLE` (0) | `true`<br> |
