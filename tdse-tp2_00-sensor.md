@@ -67,6 +67,6 @@ La cola implementa un búfer circular con capacidad para 16 elementos (`QUEUE_LE
 | **Mientras permanece presionado**<br> | 1 | 0 | 1 | Sin cambios|
 | **Transición a liberado (`EV_BTN_UP`)**<br> | 2 | 0 | 2 | `queue[1]` = `EV_SYS_IDLE` (0)|
 
- |
+ 
 
 (Nota: Los valores de `count` y `tail` asumen que ninguna otra tarea ha consumido los eventos de la cola mediante `get_event_task_system()` durante la secuencia).
