@@ -183,3 +183,27 @@ El uso de `LOGGER_INFO()` dentro de una tarea o durante el ciclo de ejecución i
 
 
 4. **Desactivación de interrupciones**: `LOGGER_INFO()` ejecuta `__asm("CPSID i")` al inicio y `__asm("CPSIE i")` al final. Al mantener las interrupciones deshabilitadas mientras realiza transmisiones lentas por Semihosting, puede provocar que se pierdan o retrasen las interrupciones del SysTick, afectando la precisión del conteo de ticks `g_app_tick_cnt` y el determinismo del sistema de tiempo real.
+
+
+
+
+
+## Métricas de Ejecución de Tareas (`task_dta_list`)
+
+### Tarea 0: Sensor (index = 0)
+* **NOE (Number of Executions):** 91713 (adimensional)
+* **LET (Last Execution Time):** 4 μs
+* **BCET (Best-Case Execution Time):** 4 μs
+* **WCET (Worst-Case Execution Time):** 5 μs
+
+### Tarea 1: System (index = 1)
+* **NOE (Number of Executions):** 91713 (adimensional)
+* **LET (Last Execution Time):** 3 μs
+* **BCET (Best-Case Execution Time):** 3 μs
+* **WCET (Worst-Case Execution Time):** 5 μs
+
+### Tarea 2: Actuator (index = 2)
+* **NOE (Number of Executions):** 91713 (adimensional)
+* **LET (Last Execution Time):** 2 μs
+* **BCET (Best-Case Execution Time):** 2 μs
+* **WCET (Worst-Case Execution Time):** 4 μs
