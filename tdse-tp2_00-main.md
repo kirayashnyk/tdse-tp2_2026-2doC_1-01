@@ -152,10 +152,6 @@ $$\text{LOAD} = \frac{64\,000\,000\text{ Hz}}{1000\text{ Hz}} - 1 = 63999$$
 | Etapa del Código | `SystemCoreClock` | Valor de Recarga SysTick (`SysTick->LOAD`) | Estado del SysTick |
 | --- | --- | --- | --- |
 | **`Reset_Handler`** | $8\text{ MHz}$ | $0$ | Deshabilitado |
-| **`HAL_Init()`** | $8\text{ MHz}$<br> | $7999$ (Intervalo de $1\text{ ms}$) | Habilitado e Interrumpiendo
-
- |
-| **`SystemClock_Config()`** | $64\text{ MHz}$<br> | $63999$ (Intervalo de $1\text{ ms}$) | Reconfigurado y Activo
-
- |
+| **`HAL_Init()`** | $8\text{ MHz}$<br> | $7999$ (Intervalo de $1\text{ ms}$) | Habilitado e Interrumpiendo|
+| **`SystemClock_Config()`** | $64\text{ MHz}$<br> | $63999$ (Intervalo de $1\text{ ms}$) | Reconfigurado y Activo|
 | **`while (1)`** | $64\text{ MHz}$<br> | $63999$ | Incrementa `uwTick` cada $1\text{ ms}$<br> |
