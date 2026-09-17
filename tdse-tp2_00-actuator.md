@@ -33,7 +33,7 @@ Dado que `ACTUATOR_DTA_QTY = 1`, la variable `index` tomará únicamente el valo
 
 ---
 
-**Comportamiento de `task_actuator_statechart(uint32_t index)**`
+**Comportamiento de **`task_actuator_statechart(uint32_t index)`
 
 La función evalúa el estado actual guardado en `task_actuator_dta_list[index]`:
 
