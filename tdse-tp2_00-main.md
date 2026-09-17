@@ -73,18 +73,18 @@ A continuación se detalla la evolución de la variable global de frecuencia `Sy
 
 #### 1. Frecuencia de Reloj (`SystemCoreClock`)
 
-* **En `Reset_Handler` $\to$ `SystemInit()**`:
+* **En `Reset_Handler` $\to$ `SystemInit()`**:
 * Al encender el microcontrolador, arranca con el oscilador HSI interno por defecto (8 MHz) sin PLL.
 * La función `SystemInit()` fija el valor inicial de la variable en **$8\text{ MHz}$** ($8\,000\,000\text{ Hz}$).
 
 
-* **En `main()` $\to$ Durante `HAL_Init()**`:
+* **En `main()` $\to$ Durante `HAL_Init()`**:
 * Mantiene el valor base inicial de **$8\text{ MHz}$**.
 
 
 
 
-* **En `main()` $\to$ Durante `SystemClock_Config()**`:
+* **En `main()` $\to$ Durante `SystemClock_Config()`**:
 * Se selecciona la fuente **HSI** ($8\text{ MHz}$) con divisor por $2$ $\to$ $4\text{ MHz}$.
 
 
@@ -102,7 +102,7 @@ $$f_{\text{PLL}} = 4\text{ MHz} \times 16 = 64\text{ MHz}$$
 
 
 
-* **En el Bucle `while (1)**`:
+* **En el Bucle `while (1)`**:
 * La variable `SystemCoreClock` se mantiene estable en **$64\text{ MHz}$**.
 
 
@@ -111,11 +111,11 @@ $$f_{\text{PLL}} = 4\text{ MHz} \times 16 = 64\text{ MHz}$$
 
 #### 2. Periférico / Registro de Recarga (`SysTick`)
 
-* **En `Reset_Handler**`:
+* **En `Reset_Handler`**:
 * El periférico `SysTick` se encuentra en estado por defecto (deshabilitado, registro `LOAD` en $0$, interrupción deshabilitada).
 
 
-* **En `main()` $\to$ Durante `HAL_Init()**`:
+* **En `main()` $\to$ Durante `HAL_Init()`**:
 * `HAL_Init()` invoca `HAL_InitTick()`, el cual configura el periférico `SysTick` para generar una interrupción cada $1\text{ ms}$ basada en el reloj actual ($8\text{ MHz}$).
 
 
@@ -127,7 +127,7 @@ $$\text{LOAD} = \frac{8\,000\,000\text{ Hz}}{1000\text{ Hz}} - 1 = 7999$$
 * Se habilita el temporizador SysTick, el conteo y su interrupción.
 
 
-* **En `main()` $\to$ Durante `SystemClock_Config()**`:
+* **En `main()` $\to$ Durante `SystemClock_Config()`**:
 * Al reconfigurar el reloj principal a $64\text{ MHz}$, la función `HAL_RCC_ClockConfig()` vuelve a invocar internamente a `HAL_InitTick()` para recalcular la velocidad de parada del temporizador.
 
 
@@ -138,7 +138,7 @@ $$\text{LOAD} = \frac{64\,000\,000\text{ Hz}}{1000\text{ Hz}} - 1 = 63999$$
 
 
 
-* **En el Bucle `while (1)**`:
+* **En el Bucle `while (1)`**:
 * El periférico `SysTick` se mantiene decrementando cíclicamente desde $63999$ hasta $0$ a una velocidad de $64\text{ MHz}$, disparando la interrupción `SysTick_Handler()` e incrementando el contador global `uwTick` exactamente cada $1\text{ ms}$.
 
 
