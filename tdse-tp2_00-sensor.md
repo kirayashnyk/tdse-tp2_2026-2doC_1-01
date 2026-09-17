@@ -1,6 +1,6 @@
 El código analizado implementa la gestión de un botón físico (`ID_BTN_A`) mediante una máquina de estados finitos (FSM) no bloqueante. Detecta transiciones de pulsación y liberación, enviando eventos a una cola circular de mensajes (`event_task_system_queue`) que conecta con la tarea principal del sistema (`task_system`).
 
-**Comportamiento de `task_sensor_statechart(uint32_t index)**`
+**Comportamiento de `task_sensor_statechart(uint32_t index)`**
 
 Esta función implementa la lógica de control del sensor seleccionado por `index`:
 
@@ -22,7 +22,7 @@ Esta función implementa la lógica de control del sensor seleccionado por `inde
 
 ---
 
-**Evolución de las variables de `task_sensor_dta_list**`
+**Evolución de las variables de `task_sensor_dta_list`**
 
 La unidad de medida de `tick` son **milisegundos (mS)**. Dado que existe un único sensor definido en `task_sensor_cfg_list` (`SENSOR_CFG_QTY = 1`), la variable `index` vale siempre **0**.
 
@@ -36,7 +36,7 @@ La unidad de medida de `tick` son **milisegundos (mS)**. Dado que existe un úni
 
 ---
 
-**Evolución de las variables de la cola `event_task_system_queue**`
+**Evolución de las variables de la cola `event_task_system_queue`**
 
 La cola implementa un búfer circular con capacidad para 16 elementos (`QUEUE_LENGTH`).
 
