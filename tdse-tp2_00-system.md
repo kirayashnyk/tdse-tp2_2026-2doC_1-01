@@ -55,5 +55,5 @@ El actuador configurado es el LED principal con `identifier = 0` (`ID_LED_A`).
 | Etapa de Ejecución | `identifier` | `task_actuator_dta_list[0].event` | `task_actuator_dta_list[0].flag` |
 | --- | --- | --- | --- |
 | **Inicio**<br> | 0 (`ID_LED_A`)| Valor por defecto de inicialización | `false`<br> |
-| **Transición a activo en `task_system_update**`<br> | 0 (`ID_LED_A`) | `EV_LED_ACTIVE` (1) | `true`<br> |
-| **Transición a inactivo en `task_system_update**`<br> | 0 (`ID_LED_A`) | `EV_LED_IDLE` (0) | `true`<br> |
+| **Transición a activo en `task_system_update`**<br> | 0 (`ID_LED_A`) | `EV_LED_ACTIVE` (1) | `true`<br> |
+| **Transición a inactivo en `task_system_update`**<br> | 0 (`ID_LED_A`) | `EV_LED_IDLE` (0) | `true`<br> |
