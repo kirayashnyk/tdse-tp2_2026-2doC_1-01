@@ -1,6 +1,6 @@
 El módulo implementa la lógica de control del sistema (`task_system`) mediante una máquina de estados finitos (FSM) no bloqueante orientada a eventos. Procesa eventos recibidos en la cola FIFO `event_task_system_queue` y los traduce en comandos de salida hacia la interfaz del actuador `put_event_task_actuator`.
 
-**Comportamiento de `task_system_normal_statechart**`
+**Comportamiento de `task_system_normal_statechart`**
 
 La función gestiona el estado lógico del sistema en la variable global/lista para el índice `NORMAL`:
 
@@ -22,7 +22,7 @@ La función gestiona el estado lógico del sistema en la variable global/lista p
 
 ---
 
-**Evolución de variables en `task_system_dta_list**`
+**Evolución de variables en `task_system_dta_list`**
 
 La unidad de medida de `tick` son **milisegundos (mS)**. El índice utilizado es `index = 0` (`NORMAL`).
 
@@ -35,7 +35,7 @@ La unidad de medida de `tick` son **milisegundos (mS)**. El índice utilizado es
 
 ---
 
-**Evolución de variables en `event_task_system_queue**`
+**Evolución de variables en `event_task_system_queue`**
 
 La cola almacena hasta 16 elementos (`QUEUE_LENGTH`), indexados de `i = 0` a `15`.
 
@@ -48,7 +48,7 @@ La cola almacena hasta 16 elementos (`QUEUE_LENGTH`), indexados de `i = 0` a `15
 
 ---
 
-**Evolución de variables en `task_actuator_dta_list**`
+**Evolución de variables en `task_actuator_dta_list`**
 
 El actuador configurado es el LED principal con `identifier = 0` (`ID_LED_A`).
 
