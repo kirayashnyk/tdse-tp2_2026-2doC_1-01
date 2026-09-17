@@ -14,7 +14,7 @@ El sistema implementa un esquema de arquitectura **Bare Metal** guiado por event
 * **`app_it.c`**: Maneja la interrupción del temporizador del sistema. `app_it_init()` resetea `g_app_tick_cnt` a 0. `HAL_SYSTICK_Callback()` incrementa de forma atómica `g_app_tick_cnt` cada 1 millasegundo (configuración típica del SysTick).
 
 
-* **`logger.c` y `logger.h**`: Proporcionan funciones de registro/depuración sobre Semihosting o printf. `LOGGER_INFO()` desactiva interrupciones, formatea y transmite el mensaje bloqueando la ejecución.
+* **`logger.c` y `logger.h`**: Proporcionan funciones de registro/depuración sobre Semihosting o printf. `LOGGER_INFO()` desactiva interrupciones, formatea y transmite el mensaje bloqueando la ejecución.
 
 
 * **`systick.c`**: Implementa `systick_delay_us()`, que genera retardos bloqueantes en microsegundos mediante la lectura directa del registro `SysTick->VAL`.
@@ -65,7 +65,7 @@ Sea $t_i$ el tiempo en $\mu s$ que consume la ejecución de la tarea $i$ en una 
 * **`index`**: Toma los valores 0, 1 y 2 secuencialmente dentro del bucle.
 
 
-* **Valores iniciales en `task_dta_list[index]**` para los 3 índices ($index \in \{0, 1, 2\}$):
+* **Valores iniciales en `task_dta_list[index]`** para los 3 índices ($index \in \{0, 1, 2\}$):
 
 
 * `NOE` = $0$
