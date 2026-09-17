@@ -28,31 +28,11 @@ La unidad de medida de `tick` son **milisegundos (mS)**. Dado que existe un úni
 
 | Etapa del ciclo de vida | `index` | `tick` [mS] | `state` | `event` |
 | --- | --- | --- | --- | --- |
-| **Inicio (`task_sensor_init`)**<br> | 0 | 0 | `ST_BTN_IDLE` (0)
-
- | `EV_BTN_UP` (0)
-
- |
-| **`task_sensor_update` (sin pulsar)**<br> | 0 | 0 | `ST_BTN_IDLE` (0)
-
- | `EV_BTN_UP` (0)
-
- |
-| **`task_sensor_update` (evento presionar)**<br> | 0 | 0 | Transiciona a `ST_BTN_ACTIVE` (1)
-
- | `EV_BTN_DOWN` (1)
-
- |
-| **`task_sensor_update` (mantiene presionado)**<br> | 0 | 0 | `ST_BTN_ACTIVE` (1)
-
- | `EV_BTN_DOWN` (1)
-
- |
-| **`task_sensor_update` (evento liberar)**<br> | 0 | 0 | Transiciona a `ST_BTN_IDLE` (0)
-
- | `EV_BTN_UP` (0)
-
- |
+| **Inicio (`task_sensor_init`)**<br> | 0 | 0 | `ST_BTN_IDLE` (0) | `EV_BTN_UP` (0)|
+| **`task_sensor_update` (sin pulsar)**<br> | 0 | 0 | `ST_BTN_IDLE` (0) | `EV_BTN_UP` (0)|
+| **`task_sensor_update` (evento presionar)**<br> | 0 | 0 | Transiciona a `ST_BTN_ACTIVE` (1)| `EV_BTN_DOWN` (1)|
+| **`task_sensor_update` (mantiene presionado)**<br> | 0 | 0 | `ST_BTN_ACTIVE` (1)| `EV_BTN_DOWN` (1)|
+| **`task_sensor_update` (evento liberar)**<br> | 0 | 0 | Transiciona a `ST_BTN_IDLE` (0)| `EV_BTN_UP` (0)|
 
 ---
 
