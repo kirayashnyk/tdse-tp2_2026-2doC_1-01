@@ -42,9 +42,9 @@ La cola almacena hasta 16 elementos (`QUEUE_LENGTH`), indexados de `i = 0` a `15
 | Etapa de Ejecución | `head` | `tail` | `count` | `queue[i]` (Contenido) |
 | --- | --- | --- | --- | --- |
 | **Inicio (`init_event_task_system`)**<br> | 0 | 0 | 0 | `queue[0..15]` = `255` (`EMPTY`)|
-| **Llega evento `EV_SYS_ACTIVE**`<br> | 1 | 0 | 1 | `queue[0]` = `1` (`EV_SYS_ACTIVE`)|
-| **Procesado en `task_system_update**`<br> | 1 | 1 | 0 | `queue[0]` = `255` (`EMPTY`)|
-| **Llega evento `EV_SYS_IDLE**`<br> | 2 | 1 | 1 | `queue[1]` = `0` (`EV_SYS_IDLE`)|
+| **Llega evento `EV_SYS_ACTIVE`**<br> | 1 | 0 | 1 | `queue[0]` = `1` (`EV_SYS_ACTIVE`)|
+| **Procesado en `task_system_update`**<br> | 1 | 1 | 0 | `queue[0]` = `255` (`EMPTY`)|
+| **Llega evento `EV_SYS_IDLE`**<br> | 2 | 1 | 1 | `queue[1]` = `0` (`EV_SYS_IDLE`)|
 
 ---
 
