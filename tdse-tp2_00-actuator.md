@@ -37,10 +37,10 @@ Dado que `ACTUATOR_DTA_QTY = 1`, la variable `index` tomará únicamente el valo
 
 La función evalúa el estado actual guardado en `task_actuator_dta_list[index]`:
 
-* **En estado `ST_LED_IDLE**`: Si `flag == true` y `event == EV_LED_ACTIVE`, limpia la bandera (`flag = false`), enciende el LED físico a través de HAL GPIO (`led_on`) y transiciona al estado `ST_LED_ACTIVE`.
+* **En estado `ST_LED_IDLE`**: Si `flag == true` y `event == EV_LED_ACTIVE`, limpia la bandera (`flag = false`), enciende el LED físico a través de HAL GPIO (`led_on`) y transiciona al estado `ST_LED_ACTIVE`.
 
 
-* **En estado `ST_LED_ACTIVE**`: Si `flag == true` y `event == EV_LED_IDLE`, limpia la bandera (`flag = false`), apaga el LED físico (`led_off`) y transiciona al estado `ST_LED_IDLE`.
+* **En estado `ST_LED_ACTIVE`**: Si `flag == true` y `event == EV_LED_IDLE`, limpia la bandera (`flag = false`), apaga el LED físico (`led_off`) y transiciona al estado `ST_LED_IDLE`.
 
 
 * **Estado `default` (Recuperación de fallos)**: Si el estado no es válido, asigna `tick = 0ul` (`DEL_LED_MIN`), e reinicializa el estado a `ST_LED_IDLE`, el evento a `EV_LED_IDLE` y `flag` a `false`.
@@ -56,11 +56,7 @@ La función de interfaz `put_event_task_actuator(event, identifier)` se llama de
 | Instancia / Llamada | `identifier` | `event` | `flag` |
 | --- | --- | --- | --- |
 | **Inicio (`task_actuator_init`)**<br> | `0` | `EV_LED_IDLE`<br> | `false`<br> |
-| **Ejecución `put_event_task_actuator(EV_LED_ACTIVE, ID_LED_A)**`<br> | `0` (`ID_LED_A`)
-
- | `EV_LED_ACTIVE`<br> | `true`<br> |
+| **Ejecución `put_event_task_actuator(EV_LED_ACTIVE, ID_LED_A)**`<br> | `0` (`ID_LED_A`)| `EV_LED_ACTIVE`<br> | `true`<br> |
 | **Tras procesar en `task_actuator_update**`<br> | `0` | `EV_LED_ACTIVE` | `false`<br> |
-| **Ejecución `put_event_task_actuator(EV_LED_IDLE, ID_LED_A)**`<br> | `0` (`ID_LED_A`)
-
- | `EV_LED_IDLE`<br> | `true`<br> |
+| **Ejecución `put_event_task_actuator(EV_LED_IDLE, ID_LED_A)**`<br> | `0` (`ID_LED_A`)| `EV_LED_IDLE`<br> | `true`<br> |
 | **Tras procesar en `task_actuator_update**`<br> | `0` | `EV_LED_IDLE` | `false`<br> |
