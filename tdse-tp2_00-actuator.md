@@ -56,7 +56,7 @@ La función de interfaz `put_event_task_actuator(event, identifier)` se llama de
 | Instancia / Llamada | `identifier` | `event` | `flag` |
 | --- | --- | --- | --- |
 | **Inicio (`task_actuator_init`)**<br> | `0` | `EV_LED_IDLE`<br> | `false`<br> |
-| **Ejecución `put_event_task_actuator(EV_LED_ACTIVE, ID_LED_A)**`<br> | `0` (`ID_LED_A`)| `EV_LED_ACTIVE`<br> | `true`<br> |
-| **Tras procesar en `task_actuator_update**`<br> | `0` | `EV_LED_ACTIVE` | `false`<br> |
-| **Ejecución `put_event_task_actuator(EV_LED_IDLE, ID_LED_A)**`<br> | `0` (`ID_LED_A`)| `EV_LED_IDLE`<br> | `true`<br> |
-| **Tras procesar en `task_actuator_update**`<br> | `0` | `EV_LED_IDLE` | `false`<br> |
+| **Ejecución `put_event_task_actuator(EV_LED_ACTIVE, ID_LED_A)`**<br> | `0` (`ID_LED_A`)| `EV_LED_ACTIVE`<br> | `true`<br> |
+| **Tras procesar en `task_actuator_update`**<br> | `0` | `EV_LED_ACTIVE` | `false`<br> |
+| **Ejecución `put_event_task_actuator(EV_LED_IDLE, ID_LED_A)`**<br> | `0` (`ID_LED_A`)| `EV_LED_IDLE`<br> | `true`<br> |
+| **Tras procesar en `task_actuator_update`**<br> | `0` | `EV_LED_IDLE` | `false`<br> |
