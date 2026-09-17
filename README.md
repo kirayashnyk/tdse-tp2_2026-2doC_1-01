@@ -5,4 +5,4 @@
 
 | Padrón | Apellidos, Nombres | Fecha | Deadline |
 | --- | --- | --- | --- |
-| :111821 | :Yashnyk,Kira | :16/09/26: | :Semana 06: |
+| 111821 | Yashnyk,Kira | 16/09/26 | Semana 06 |
