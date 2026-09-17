@@ -26,13 +26,9 @@ Dado que `ACTUATOR_DTA_QTY = 1`, la variable `index` tomará únicamente el valo
 | --- | --- | --- | --- | --- | --- |
 | **Al iniciar (`task_actuator_init`)**<br> | `0` | *Indefinido* | `ST_LED_IDLE`<br> | `EV_LED_IDLE`<br> | `false`<br> |
 | **`task_actuator_update` (Sin eventos externos)**<br> | `0` | Sin cambio | `ST_LED_IDLE` | `EV_LED_IDLE` | `false` |
-| **Recepción de evento `EV_LED_ACTIVE**` (vía `put_event...`)
-
- | `0` | Sin cambio | `ST_LED_IDLE` | `EV_LED_ACTIVE`<br> | `true`<br> |
+| **Recepción de evento `EV_LED_ACTIVE**` (vía `put_event...`)| `0` | Sin cambio | `ST_LED_IDLE` | `EV_LED_ACTIVE`<br> | `true`<br> |
 | **`task_actuator_update` (Siguiente ejecución tras evento)**<br> | `0` | Sin cambio | `ST_LED_ACTIVE`<br> | `EV_LED_ACTIVE` | `false`<br> |
-| **Recepción de evento `EV_LED_IDLE**` (vía `put_event...`)
-
- | `0` | Sin cambio | `ST_LED_ACTIVE` | `EV_LED_IDLE`<br> | `true`<br> |
+| **Recepción de evento `EV_LED_IDLE**` (vía `put_event...`)| `0` | Sin cambio | `ST_LED_ACTIVE` | `EV_LED_IDLE`<br> | `true`<br> |
 | **`task_actuator_update` (Siguiente ejecución tras evento)**<br> | `0` | Sin cambio | `ST_LED_IDLE`<br> | `EV_LED_IDLE` | `false`<br> |
 
 ---
