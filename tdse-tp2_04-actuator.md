@@ -31,3 +31,24 @@ La verificación final del funcionamiento del actuador se realizó integrando f�
 *   **Estado Apagado:** El LED permanece apagado (`ST_LED_OFF`) durante las etapas de reposo del sistema, es decir, cuando se aguarda la llegada de un vehículo al sensor magnético (`ST_SYS_WAIT_FOR_CAR_ARRIEVE`) y mientras se espera la interacción del usuario con el botón de ingreso (`ST_SYS_WAIT_FOR_BUTTON_PRESSED`).
 *   **Estado de Parpadeo:** Durante las transiciones mecánicas, cuando el sistema espera que la barrera termine de abrirse (`ST_SYS_WAIT_FOR_BARRIER_OPENED`) o de cerrarse (`ST_SYS_WAIT_FOR_BARRIER_CLOSED`), el módulo System envía el evento `EV_LED_BLINK`. Esto provoca que el actuador ingrese al estado `ST_LED_BLINK`, indicando visualmente que la barrera se encuentra en movimiento.
 *   **Estado Encendido:** El LED se enciende de forma fija (`ST_LED_ON`) única y exclusivamente cuando el sistema confirma que la barrera está completamente abierta y es seguro avanzar, correspondiente al estado donde se aguarda que el vehículo libere la zona (`ST_SYS_WAIT_FOR_CAR_LEAVES`).
+
+
+
+Por ultimo se detallan los valores registrados en la estructura `task_dta_list` obtenidos a través del depurador, los cuales permiten evaluar el desempeño temporal de las tareas del sistema:
+
+| Tarea | NOE (Ejecuciones) | LET (µs) | BCET (µs) | WCET (µs) |
+| :--- | :--- | :--- | :--- | :--- |
+| **Tarea 0** | 1575588 | 12 | 12 | 14 |
+| **Tarea 1** | 1575590 | 3 | 3 | 5 |
+| **Tarea 2** | 1575593 | 3 | 3 | 4 |
+
+**Descripción de las métricas analizadas:**
+*   **NOE (Number Of Executions):** Representa la cantidad total de veces que la tarea fue llamada y ejecutada por el planificador (scheduler) desde el arranque del sistema.
+*   **LET (Last Execution Time):** Es el tiempo exacto, medido en microsegundos ($\mu$s), que la tarea demoró en procesar su última iteración[cite: 16].
+*   **BCET (Best-Case Execution Time):** Registra el menor tiempo de ejecución histórico alcanzado por la tarea, marcando su escenario más favorable[cite: 16].
+*   **WCET (Worst-Case Execution Time):** Registra el mayor tiempo que la tarea tardó en ejecutarse (el pico máximo). Es la métrica más crítica en sistemas embebidos, ya que garantiza que en el peor de los casos la tarea no excederá los plazos límite del sistema de tiempo real[cite: 16].
+Según la arquitectura del sistema definida en el arreglo de configuración (`task_cfg_list`), los tres índices evaluados en el perfilado de rendimiento corresponden a los siguientes módulos del programa:
+
+*   **Tarea 0 (Módulo Sensor):** Corresponde a la ejecución periódica de `task_sensor_update`[cite: 17]. Esta tarea se encarga de interactuar con el hardware de entrada, leyendo el estado físico de los pulsadores y aplicando el filtro antirrebote (*debouncing*) para despachar eventos limpios a la cola del sistema.
+*   **Tarea 1 (Módulo System):** Corresponde a la ejecución de `task_system_update`[cite: 17]. Es el núcleo lógico del programa. Esta tarea consume los eventos generados por los sensores y hace evolucionar la máquina de estados central (System Statechart), decidiendo en base a su estado qué señales enviar al actuador.
+*   **Tarea 2 (Módulo Actuator):** Corresponde a la ejecución de `task_actuator_update`[cite: 17]. Su función es consumir los eventos despachados por el sistema y traducirlos en acciones físicas sobre los periféricos de salida, controlando el encendido, apagado o parpadeo de los LEDs de la barrera.
