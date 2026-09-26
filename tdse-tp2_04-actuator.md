@@ -44,8 +44,8 @@ Por ultimo se detallan los valores registrados en la estructura `task_dta_list` 
 
 **Descripción de las métricas analizadas:**
 *   **NOE (Number Of Executions):** Representa la cantidad total de veces que la tarea fue llamada y ejecutada por el planificador (scheduler) desde el arranque del sistema.
-*   **LET (Last Execution Time):** Es el tiempo exacto, medido en microsegundos ($\mu$s), que la tarea demoró en procesar su última iteración[cite: 16].
-*   **BCET (Best-Case Execution Time):** Registra el menor tiempo de ejecución histórico alcanzado por la tarea, marcando su escenario más favorable[cite: 16].
+*   **LET (Last Execution Time):** Es el tiempo exacto, medido en microsegundos ($\mu$s), que la tarea demoró en procesar su última iteración.
+*   **BCET (Best-Case Execution Time):** Registra el menor tiempo de ejecución histórico alcanzado por la tarea, marcando su escenario más favorable].
 *   **WCET (Worst-Case Execution Time):** Registra el mayor tiempo que la tarea tardó en ejecutarse (el pico máximo). Es la métrica más crítica en sistemas embebidos, ya que garantiza que en el peor de los casos la tarea no excederá los plazos límite del sistema de tiempo real.
 
 
