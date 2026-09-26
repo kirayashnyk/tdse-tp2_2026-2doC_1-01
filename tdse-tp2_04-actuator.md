@@ -47,6 +47,9 @@ Por ultimo se detallan los valores registrados en la estructura `task_dta_list` 
 *   **LET (Last Execution Time):** Es el tiempo exacto, medido en microsegundos ($\mu$s), que la tarea demoró en procesar su última iteración[cite: 16].
 *   **BCET (Best-Case Execution Time):** Registra el menor tiempo de ejecución histórico alcanzado por la tarea, marcando su escenario más favorable[cite: 16].
 *   **WCET (Worst-Case Execution Time):** Registra el mayor tiempo que la tarea tardó en ejecutarse (el pico máximo). Es la métrica más crítica en sistemas embebidos, ya que garantiza que en el peor de los casos la tarea no excederá los plazos límite del sistema de tiempo real.
+
+
+
 Según la arquitectura del sistema definida en el arreglo de configuración (`task_cfg_list`), los tres índices evaluados en el perfilado de rendimiento corresponden a los siguientes módulos del programa:
 
 *   **Tarea 0 (Módulo Sensor):** Corresponde a la ejecución periódica de `task_sensor_update`. Esta tarea se encarga de interactuar con el hardware de entrada, leyendo el estado físico de los pulsadores y aplicando el filtro antirrebote (*debouncing*) para despachar eventos limpios a la cola del sistema.
