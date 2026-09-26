@@ -29,7 +29,8 @@ La función `task_system_init()` inicializa la estructura de datos del sistema. 
 *   **`tick` (ms):** Actúa como temporizador del estado activo. Se utiliza en estados que requieren esperas (timeouts) o rutinas temporizadas. Se incrementa con cada llamado a `task_system_update()` y suele reiniciarse al cambiar de estado.
 *   **`flag`:** Es una variable de control booleana (`true` / `false`) que el statechart utiliza internamente para recordar condiciones previas, bloquear repeticiones de acciones o habilitar caminos alternativos dentro de la máquina de estados.
 
-*   El diagrama de estados define el ciclo de operación de una barrera de acceso. El recorrido completo del sistema se da de la siguiente manera:
+  
+El diagrama de estados define el ciclo de operación de una barrera de acceso. El recorrido completo del sistema se da de la siguiente manera:
 
 1.  **Inicialización:** El sistema arranca y por defecto envía señales al actuador para asegurarse de que la barrera esté cerrada (`EV_LED_ON`, `ID_LED_BARRIER_CLOSE`) y apaga el indicador de barrera abierta (`EV_LED_OFF`, `ID_LED_BARRIER_OPEN`). El estado inicial es **`ST_SYS_WAIT_FOR_CAR_ARRIEVE`**.
 2.  **Llegada del vehículo:** El sistema permanece inactivo hasta que se detecta la llegada de un auto mediante el evento `EV_SYS_CAMERA` (asignado al botón D3). Esto provoca la transición al estado **`ST_SYS_WAIT_FOR_BUTTON_PRESSED`**.
