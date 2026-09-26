@@ -4,7 +4,7 @@
 
 A continuación se presentan los valores observados en el arreglo de la estructura `task_sensor_dta_list` para las tres instancias de los botones durante la ejecución del programa en reposo:
 
-| Sensor (Índice) | Campo (Atributo) | Valor Medido | Unidad / Descripción |
+| Boton | Campo (Atributo) | Valor Medido | Unidad / Descripción |
 | :--- | :--- | :--- | :--- |
 | D2 | `tick` | 0 | ms (milisegundos) |
 | | `state` | ST_BTN_UP (0) | Estado actual de la FSM 0 |
